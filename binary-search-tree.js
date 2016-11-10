@@ -48,7 +48,7 @@ class BinarySearchTree {
         node.right = removeNode(node.right, temp);
         return node;
       } else if (data < node.data) {
-        node.left = removeNode(node.left);
+        node.left = removeNode(node.left, data);
         return node;
       } else {
         node.right = removeNode(node.right, data);
