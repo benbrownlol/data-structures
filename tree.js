@@ -53,7 +53,7 @@ class Tree {
   traverseDFS(fn, method) {
     const current = this.root;
     if (method) {
-      this['_' + method](current, fn);
+      this[`_${method}`](current, fn);
     } else {
       this._preOrder(current, fn);
     }
@@ -77,7 +77,7 @@ class Tree {
     let string = '';
     while (queue.length) {
       const node = queue.shift();
-      string += node.data.toString() + ' ';
+      string += `${node.data.toString()} `;
       if (node === newline && queue.length) {
         queue.push(newline);
       }
