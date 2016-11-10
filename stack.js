@@ -13,6 +13,13 @@ class Stack {
     if (!this.stack.length) return 'Stack is empty!';
     return this.stack.pop();
   }
+  run(fn) {
+    if (fn) {
+      while (this.stack.length) {
+        fn(this.stack.pop());
+      }
+    }
+  }
   length() {
     return this.stack.length;
   }
