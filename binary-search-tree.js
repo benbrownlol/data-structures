@@ -39,19 +39,19 @@ class BinarySearchTree {
     const removeNode = (node, data) => {
       if (!node) return null;
       if (data === node.data) {
-        if (!node.left && !node.right) return null;
-        if (!node.left) return node.right;
-        if (!node.right) return node.left;
+        if (!node.left && !node.right) return null; // no children - replace with null
+        if (!node.left) return node.right; // no left child - replace with right branch
+        if (!node.right) return node.left; // no right child - replace with left branch
         // has 2 children
-        const temp = this.getMin(node.right);
-        node.data = temp;
-        node.right = removeNode(node.right, temp);
+        const temp = this.getMin(node.right); // get minimum value in right branch
+        node.data = temp; // replace node with duplicate minimum value
+        node.right = removeNode(node.right, temp); // search right node for original minimum
         return node;
       } else if (data < node.data) {
-        node.left = removeNode(node.left, data);
+        node.left = removeNode(node.left, data); // search left
         return node;
       } else {
-        node.right = removeNode(node.right, data);
+        node.right = removeNode(node.right, data); // search right
         return node;
       }
     };
